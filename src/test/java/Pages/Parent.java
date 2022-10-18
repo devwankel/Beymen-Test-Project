@@ -37,6 +37,14 @@ public class Parent {
         element.click(); // click yap
     }
 
+    public void clear(WebElement element)
+    {
+
+        waitUntilClickable(element);
+        scrollToElement(element);
+        element.clear();
+    }
+
     public void waitUntilClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
         wait.until(ExpectedConditions.elementToBeClickable(element));

@@ -2,9 +2,9 @@ Feature: Beymen Test project
 
   Scenario:
     Given Nagivgate to beymen.com
-    Then The word "sort" is entered into the search box.
+    Then The word sort is entered into the search box.
     Then The value entered in the search box is deleted.
-    And The word "gomlek" is entered into the search box.
+    And The word gomlek is entered into the search box.
     Then Press the enter key on the keyboard
     And One of the products listed according to the result is randomly selected
     Then Product information and amount information of the selected product are written in a txt file.
