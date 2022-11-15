@@ -3,11 +3,13 @@ package Utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +49,10 @@ public class GWD {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
 
-                    threadDriver.set(new ChromeDriver()); // bu thread e chrome istenmişşse ve yoksa bir tane ekleniyor
+                    ChromeOptions options=new ChromeOptions();
+                    //options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+                    threadDriver.set(new ChromeDriver(options)); // bu thread e chrome istenmişşse ve yoksa bir tane ekleniyor
+
 
                     break;
 

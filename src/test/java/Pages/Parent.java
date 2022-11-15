@@ -39,8 +39,6 @@ public class Parent {
 
     public void clear(WebElement element)
     {
-
-        waitUntilClickable(element);
         scrollToElement(element);
         element.clear();
     }

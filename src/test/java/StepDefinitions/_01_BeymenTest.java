@@ -45,18 +45,28 @@ public class _01_BeymenTest {
     public void theValueEnteredInTheSearchBoxIsDeleted() {
 
         dc.findAndClear("searchInput");
+        dc.findAndClick("searchInput");
 
     }
 
     @Then("The word gomlek is entered into the search box.")
-    public void theWordGomlekIsEnteredIntoTheSearchBox() {
+    public void theWordGomlekIsEnteredIntoTheSearchBox() throws IOException {
 
+        String file = "src/test/java/ApachePOI/resource/BeymenTestDatas.xlsx";
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Workbook workbook = WorkbookFactory.create(fileInputStream);
+
+        Sheet sheet = workbook.getSheetAt(0);
+
+        Row row = sheet.getRow(1);
+        Cell cell = row.getCell(0);
+
+        dc.findAndSend("searchInput", cell.toString());
 
     }
 
     @Then("Press the enter key on the keyboard")
     public void pressTheEnterKeyOnTheKeyboard() {
-
 
     }
 
