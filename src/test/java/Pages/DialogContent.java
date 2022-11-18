@@ -17,6 +17,16 @@ public class DialogContent extends Parent {
     @FindBy(id = "onetrust-accept-btn-handler")
     private WebElement cookies;
 
+    @FindBy(xpath = "//div[@data-productid='1008632']")
+    private WebElement product;
+
+    @FindBy(xpath = "(//span[text()='Slim Fit Haki Oxford Gömlek'])[2]")
+    private WebElement productName;
+
+    @FindBy(id = "priceNew")
+    private WebElement productPrice;
+
+
 
     WebElement myElement;
 
@@ -29,22 +39,32 @@ public class DialogContent extends Parent {
         sendKeysFunction(myElement, value);
     }
 
-    public void findAndClick(String strElement) {  // 2.aşama
-        // burda string isimden weblemente ulaşıcam
+    public void findAndClick(String strElement) {
+
         switch (strElement) {
             case "cookies": myElement = cookies; break;
+            case "product": myElement = product; break;
         }
 
         clickFunction(myElement);
     }
 
-    public void findAndContainsText(String strElement, String text) {  // 2.aşama
-        // burda string isimden weblemente ulaşıcam
+    public void findAndContainsText(String strElement, String text) {
         switch (strElement) {
-            //case "dashboard" : myElement =dashboard; break;
+            case "productName" : myElement =productName; break;
+            case "productPrice" : myElement =productPrice; break;
         }
 
         verifyContainsText(myElement, text);
+    }
+
+    public String  findAndGetText(String strElement) {
+        switch (strElement) {
+            case "productName" : myElement =productName; break;
+            case "productPrice" : myElement =productPrice; break;
+        }
+
+        return verifyContainsText(myElement);
     }
 
     public void findAndClear(String strElement) {

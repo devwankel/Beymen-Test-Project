@@ -7,7 +7,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.apache.poi.ss.usermodel.*;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class _01_BeymenTest {
@@ -66,19 +70,40 @@ public class _01_BeymenTest {
     }
 
     @Then("Press the enter key on the keyboard")
-    public void pressTheEnterKeyOnTheKeyboard() {
+    public void pressTheEnterKeyOnTheKeyboard() throws AWTException {
+
+        Robot rbt =new Robot();
+
+        rbt.keyPress(KeyEvent.VK_ENTER);
+        rbt.keyRelease(KeyEvent.VK_ENTER);
 
     }
 
     @And("One of the products listed according to the result is randomly selected")
     public void oneOfTheProductsListedAccordingToTheResultIsRandomlySelected() {
 
+        dc.findAndClick("product");
 
     }
 
     @Then("Product information and amount information of the selected product are written in a txt file.")
     public void productInformationAndAmountInformationOfTheSelectedProductAreWrittenInATxtFile() {
 
+        String productName = dc.findAndGetText("productName");
+        String productPrice =dc.findAndGetText("productPrice");
+
+        System.out.println("productName = " + productName);
+        System.out.println("productPrice = " + productPrice);
+
+        try {
+            FileWriter myWriter = new FileWriter("src/test/java/TextFile/ProductInfo.txt");
+            myWriter.write(productName);
+            myWriter.write("\n"+ productPrice);
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
     }
 
