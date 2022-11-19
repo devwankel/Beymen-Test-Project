@@ -26,7 +26,17 @@ public class DialogContent extends Parent {
     @FindBy(id = "priceNew")
     private WebElement productPrice;
 
+    @FindBy(xpath = "//span[@class='m-variation__item'][text()='S']")
+    private WebElement bodySize;
 
+    @FindBy(id = "addBasket")
+    private WebElement addCart;
+
+    @FindBy(className = "m-productPrice__salePrice")
+    private WebElement cartPrice;
+
+    @FindBy(xpath = "//a[@title='Sepetim']")
+    private WebElement cartButton;
 
     WebElement myElement;
 
@@ -44,6 +54,9 @@ public class DialogContent extends Parent {
         switch (strElement) {
             case "cookies": myElement = cookies; break;
             case "product": myElement = product; break;
+            case "bodySize": myElement = bodySize; break;
+            case "addCart": myElement = addCart; break;
+            case "cartButton": myElement = cartButton; break;
         }
 
         clickFunction(myElement);
@@ -62,6 +75,7 @@ public class DialogContent extends Parent {
         switch (strElement) {
             case "productName" : myElement =productName; break;
             case "productPrice" : myElement =productPrice; break;
+            case "cartPrice" : myElement =cartPrice; break;
         }
 
         return verifyContainsText(myElement);

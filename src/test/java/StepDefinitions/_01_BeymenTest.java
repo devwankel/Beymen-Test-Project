@@ -9,7 +9,6 @@ import org.apache.poi.ss.usermodel.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -86,11 +85,13 @@ public class _01_BeymenTest {
 
     }
 
+    String productPrice;
+
     @Then("Product information and amount information of the selected product are written in a txt file.")
     public void productInformationAndAmountInformationOfTheSelectedProductAreWrittenInATxtFile() {
 
         String productName = dc.findAndGetText("productName");
-        String productPrice =dc.findAndGetText("productPrice");
+        productPrice =dc.findAndGetText("productPrice");
 
         System.out.println("productName = " + productName);
         System.out.println("productPrice = " + productPrice);
@@ -110,12 +111,23 @@ public class _01_BeymenTest {
     @Then("The selected product is added to the cart")
     public void theSelectedProductIsAddedToTheCart() {
 
+        dc.findAndClick("bodySize");
+        dc.findAndClick("addCart");
 
     }
 
     @And("Compares the price on the product page with the price of the product in the cart.")
     public void comparesThePriceOnTheProductPageWithThePriceOfTheProductInTheCart() {
 
+        dc.findAndClick("cartButton");
+
+        String cartPrice =dc.findAndGetText("cartPrice");
+
+        if (productPrice.equals(cartPrice)) {
+            System.out.println("Sepet fiyatı ile ürün fiyatı aynı");
+        } else {
+            System.out.println("Sepet fiyatı ile ürüs fiyatı eşit değil");
+        }
 
     }
 
