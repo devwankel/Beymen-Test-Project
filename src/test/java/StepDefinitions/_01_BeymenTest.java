@@ -5,6 +5,7 @@ import Utilities.GWD;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import junit.framework.Assert;
 import org.apache.poi.ss.usermodel.*;
 
 import java.awt.*;
@@ -134,12 +135,21 @@ public class _01_BeymenTest {
     @Then("It is verified that the number of products is two by increasing the number.")
     public void ıtIsVerifiedThatTheNumberOfProductsIsByIncreasingTheNumber() {
 
+        GWD.getDriver().navigate().back();
+        dc.findAndClick("bodySize");
+        dc.findAndClick("addCart");
+        dc.findAndClick("cartButton");
+
+        dc.findAndContainsText("productPiece","2 adet");
 
     }
 
     @And("The product is deleted from the cart and it is verified that the cart is empty.")
     public void theProductIsDeletedFromTheCartAndItIsVerifiedThatTheCartIsEmpty() {
 
+        dc.findAndClick("deleteButton");
+
+        dc.findAndContainsText("emptyBasket","Sepetinizde");
 
     }
 }

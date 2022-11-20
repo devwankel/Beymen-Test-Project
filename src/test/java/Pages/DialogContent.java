@@ -38,6 +38,15 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//a[@title='Sepetim']")
     private WebElement cartButton;
 
+    @FindBy(xpath = "//option[@value='2']")
+    private WebElement productPiece;
+
+    @FindBy(id = "removeCartItemBtn0-key-0")
+    private WebElement deleteButton;
+
+    @FindBy(xpath = "//strong[text()='Sepetinizde Ürün Bulunmamaktadır']")
+    private WebElement emptyBasket;
+
     WebElement myElement;
 
     public void findAndSend(String strElement, String value) {  // 2.aşama
@@ -57,6 +66,7 @@ public class DialogContent extends Parent {
             case "bodySize": myElement = bodySize; break;
             case "addCart": myElement = addCart; break;
             case "cartButton": myElement = cartButton; break;
+            case "deleteButton": myElement = deleteButton; break;
         }
 
         clickFunction(myElement);
@@ -66,6 +76,8 @@ public class DialogContent extends Parent {
         switch (strElement) {
             case "productName" : myElement =productName; break;
             case "productPrice" : myElement =productPrice; break;
+            case "emptyBasket" : myElement =emptyBasket; break;
+            case "productPiece" : myElement =productPiece; break;
         }
 
         verifyContainsText(myElement, text);
