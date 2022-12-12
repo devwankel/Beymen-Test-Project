@@ -9,9 +9,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ExcelUtility {
-    //  kendisine verilen path deki excelin, istenilen, sheetindeki
-    // istenilen kolona kadar sütunları okuyup Arraylist formatında geri döndüren fonksiyonu yazınız.
-    //  getListData("src/test/java/ApachePOI/resources/ApacheExcel2.xlsx","testCitizen", 2); 0-2
 
     public static ArrayList< ArrayList< String > > getListData(String path, String sheetName, int columnCount){
         ArrayList< ArrayList< String > > tablo=new ArrayList<>();
@@ -39,14 +36,11 @@ public class ExcelUtility {
        return tablo;
     }
 
-    // TODO: kendisine verilen    path, scenario, browserTipi, zaman   parametreleri ile
-    // yeni bir excele bütün raporu yazacak. dosyanın varlığını veya yokluğu kontrol etmeyi googdan bulunuz
-
     public static void writeExcel(String path, Scenario scenario, String browserName, String time) {
 
         File f=new File(path);
 
-        if (!f.exists()){  // ! olunca YOKSA
+        if (!f.exists()){
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("Sayfa1");
             Row newRow = sheet.createRow(0);

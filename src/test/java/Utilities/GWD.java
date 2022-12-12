@@ -18,12 +18,6 @@ import java.util.logging.Logger;
 public class GWD {
     public static WebDriver driver;
 
-    //Bana neler lazım:  1 browser tipi lazım burada ona göre oluşturucam
-    // her bir paralel çalışan süreç için sadece o sürece özel static bir değişken lazım
-    // çünkü runner classdaki işaret edilen tüm senaryolarda aynısını çalışması lazım.
-    // demekki her pipeline için (Local) ve de ona özel static bir drivera ihtiyacım var
-    //donanımdaki adı pipeline , yazılımdaki adı Thread , paralel çalışan her bir süreç
-
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>(); // WebDriver 1 WebbDriver 2
     public static ThreadLocal<String> threadBrowserName = new ThreadLocal<>(); // chrome , firefox ...
 

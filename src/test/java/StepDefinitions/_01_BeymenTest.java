@@ -26,7 +26,7 @@ public class _01_BeymenTest {
 
     }
 
-    @Then("The word sort is entered into the search box.")
+    @Then("The word \"şort\" is entered into the search box.")
     public void theWordIsEnteredIntoTheSearchBox() throws IOException {
 
         dc.findAndClick("cookies");
@@ -53,7 +53,7 @@ public class _01_BeymenTest {
 
     }
 
-    @Then("The word gomlek is entered into the search box.")
+    @Then("The word \"gömlek\" is entered into the search box.")
     public void theWordGomlekIsEnteredIntoTheSearchBox() throws IOException {
 
         String file = "src/test/java/ApachePOI/resource/BeymenTestDatas.xlsx";
